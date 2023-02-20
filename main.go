@@ -15,7 +15,7 @@ type User struct {
 
 var users []User
 
-func getBooks(w http.ResponseWriter, r *http.Request) {
+func getUsers(w http.ResponseWriter, r *http.Request) {
 	content, err := ioutil.ReadFile("users.json")
 	if err != nil {
 		log.Fatal(err)
@@ -30,6 +30,6 @@ func getBooks(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/books", getBooks).Methods("GET")
+	router.HandleFunc("/users", getUsers).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
